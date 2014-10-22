@@ -1,0 +1,38 @@
+{
+  "name": "gulp-bust",
+  "version": "0.1.0",
+  "description": "Gulp cache busting with development or production mappings",
+  "main": "index.js",
+  "scripts": {
+    "hooks": "chmod +x hooks/*; cd .git/hooks && ln -sf ../../hooks/* .",
+    "lint": "./node_modules/jshint/bin/jshint ./",
+    "jscs": "./node_modules/jscs/bin/jscs ./",
+    "unit": "./node_modules/mocha/bin/mocha test",
+    "test": "npm run lint && npm run jscs && npm run unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattyod/gulp-bust.git"
+  },
+  "keywords": ["gulp", "cache", "bust", "cachebust"],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattyod/gulp-bust/issues"
+  },
+  "homepage": "https://github.com/mattyod/gulp-bust",
+  "dependencies": {
+    "underscore": "1.7.0",
+    "gulp-util": "3.0.1",
+    "through2": "0.6.3"
+  },
+  "devDependencies": {
+    "jshint": "2.5.6",
+    "jscs": "1.7.3",
+    "mocha": "1.21.5",
+    "chai": "1.9.2",
+    "sinon": "1.10.3",
+    "sinon-chai": "2.6.0",
+    "gulp": "3.8.8",
+    "event-stream": "3.1.7"
+  }
+}
