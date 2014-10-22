@@ -127,3 +127,6 @@ If the production flag is set to false the mappings object will look something l
 }
 ```
 
+## Licence
+
+[MIT](https://raw.github.com/mattyod/gulp-bust/master/LICENSE)
