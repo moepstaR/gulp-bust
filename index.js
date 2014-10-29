@@ -4,6 +4,7 @@ var through = require('through2'),
     gutil = require('gulp-util'),
     crypto = require('crypto'),
     _ = require('underscore'),
+    os = require('os'),
     pluginName;
 
 pluginName = 'gulp-bust';
@@ -18,6 +19,8 @@ function Bust(options) {
   Bust.prototype.mappings = {};
 
   _.extend(this.settings, options || {});
+
+  this.isWin = (os.platform() === 'win32') ? true : false;
 
   return this;
 }
@@ -52,10 +55,16 @@ Bust.prototype.rename = function (filePath, hash) {
   return chunks.concat([hash, suffix]).join('.');
 };
 
+Bust.prototype.sanitise = function (path) {
+  var reg = new RegExp('\\\\', 'g');
+
+  return this.isWin ? path.replace(reg, '/') : path;
+};
+
 Bust.prototype.res = function (file) {
   var hash,
     checksum,
-    base = file.relative;
+    base = this.sanitise(file.relative);
 
   if (this.settings.production) {
     hash = crypto.createHash(this.settings.hashType);
@@ -65,7 +74,7 @@ Bust.prototype.res = function (file) {
     file.path = this.rename(file.path, checksum);
   }
 
-  this.mappings[base] = file.relative;
+  this.mappings[base] = this.sanitise(file.relative);
 };
 
 Bust.prototype.createRegExp = function () {

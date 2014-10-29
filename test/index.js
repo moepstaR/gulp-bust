@@ -2,6 +2,7 @@
 
 var through = require('through2'),
     Bust = require('../index.js'),
+    os = require('os'),
     bust;
 
 describe('gulp-bust', sandbox(function () {
@@ -17,6 +18,8 @@ describe('gulp-bust', sandbox(function () {
         foo: 'bar'
       };
 
+      sandbox.stub(os, 'platform').returns('darwin');
+
       bust = new Bust(options);
     });
 
@@ -30,6 +33,10 @@ describe('gulp-bust', sandbox(function () {
 
     it('sets local settings', function () {
       bust.settings.should.deep.equal(options);
+    });
+
+    it('sets OS flag', function () {
+      bust.isWin.should.equal(false);
     });
 
   });
@@ -108,6 +115,43 @@ describe('gulp-bust', sandbox(function () {
 
       it('inserts the shortened hash into the file name', function () {
         path.should.equal('/img/foo.bar.12.png');
+      });
+
+    });
+
+  });
+
+  describe('sanitise', function () {
+    var path = 'foo\\bar\\foo\\bar',
+        expected = 'foo/bar/foo/bar',
+        result;
+
+    beforeEach(function () {
+      bust = new Bust();
+    });
+
+    describe('for windows', function () {
+
+      beforeEach(function () {
+        bust.isWin = true;
+        result = bust.sanitise(path);
+      });
+
+      it('returns a web path', function () {
+        result.should.equal(expected);
+      });
+
+    });
+
+    describe('for others', function () {
+
+      beforeEach(function () {
+        bust.isWin = false;
+        result = bust.sanitise(path);
+      });
+
+      it('returns the given path', function () {
+        result.should.equal(path);
       });
 
     });
