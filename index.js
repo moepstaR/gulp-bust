@@ -20,7 +20,7 @@ function Bust(options) {
 
   _.extend(this.settings, options || {});
 
-  this.isWin = (os.platform() === 'win32') ? true : false;
+  Bust.prototype.isWin = (os.platform() === 'win32') ? true : false;
 
   return this;
 }

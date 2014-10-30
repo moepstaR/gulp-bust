@@ -1,5 +1,9 @@
 # Gulp-bust Changelog
 
+## 29 October 2014: _0.2.1_
+
+* Fix ie OS checks.
+
 ## 29 October 2014: _0.2.0_
 
 * Normalise paths in mappings for Windows systems.
