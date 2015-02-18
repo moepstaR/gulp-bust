@@ -1,6 +1,6 @@
 {
   "name": "gulp-bust",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Gulp cache busting with development or production mappings",
   "main": "index.js",
   "scripts": {
@@ -22,17 +22,17 @@
   "homepage": "https://github.com/mattyod/gulp-bust",
   "dependencies": {
     "underscore": "1.7.0",
-    "gulp-util": "3.0.1",
+    "gulp-util": "3.0.3",
     "through2": "0.6.3"
   },
   "devDependencies": {
-    "jshint": "2.5.6",
-    "jscs": "1.7.3",
-    "mocha": "1.21.5",
-    "chai": "1.9.2",
-    "sinon": "1.10.3",
-    "sinon-chai": "2.6.0",
-    "gulp": "3.8.8",
-    "event-stream": "3.1.7"
+    "jshint": "2.6.0",
+    "jscs": "1.11.3",
+    "mocha": "2.1.0",
+    "chai": "2.0.0",
+    "sinon": "1.12.2",
+    "sinon-chai": "2.7.0",
+    "gulp": "3.8.11",
+    "event-stream": "3.2.2"
   }
 }

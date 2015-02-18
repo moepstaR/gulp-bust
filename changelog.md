@@ -1,5 +1,10 @@
 # Gulp-bust Changelog
 
+## 18 February 2015: _0.2.2_
+
+* Dependencies update
+* Set Node 0.12 in CI
+
 ## 29 October 2014: _0.2.1_
 
 * Fix ie OS checks.
