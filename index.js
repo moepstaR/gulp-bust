@@ -52,7 +52,7 @@ Bust.prototype.rename = function (filePath, hash) {
   chunks = filePath.split('.');
   suffix = chunks.pop();
 
-  return chunks.concat([hash, suffix]).join('.');
+  return chunks.concat(["a" + hash, suffix]).join('.');
 };
 
 Bust.prototype.sanitise = function (path) {
